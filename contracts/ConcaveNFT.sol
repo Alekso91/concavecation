@@ -4,10 +4,9 @@ pragma solidity 0.8.9;
 import '@openzeppelin/contracts/token/ERC721/ERC721.sol';
 
 contract ConcaveNFT is ERC721 {
-  uint256 public immutable maxTokenId;
+  uint256 public immutable maxTokenId = _maxSupply;
 
-  constructor(uint256 _maxTokenId) ERC721('Concave NFT', 'CNFT') {
-    maxTokenId = _maxTokenId;
+  constructor() ERC721('Concave NFT', 'CNFT') {
   }
 
   /**
