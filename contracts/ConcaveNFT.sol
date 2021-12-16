@@ -4,7 +4,8 @@ pragma solidity 0.8.9;
 import '@openzeppelin/contracts/token/ERC721/ERC721.sol';
 
 contract ConcaveNFT is ERC721 {
-  uint256 public immutable maxTokenId = _maxSupply;
+  uint256 public immutable maxTokenId = 10000;
+  uint256 public immutable maxSupply = 10000;
 
   constructor() ERC721('Concave NFT', 'CNFT') {
   }
@@ -16,6 +17,7 @@ contract ConcaveNFT is ERC721 {
      */
   function mint(uint256 _tokenId) external returns (bool) {
     require(_tokenId <= maxTokenId, 'Token id is higher than max token id');
+    require(totalSupply() <= maxSupply, 'Total supply is higher than max supply');
     _safeMint(msg.sender, _tokenId);
     return true;
   }
